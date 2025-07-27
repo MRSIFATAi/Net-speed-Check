@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedCheck - Network Speed Test</title>
+    <meta name="description" content="Test your internet speed with SpeedCheck - Fast, accurate download and upload speed testing">
+    <meta name="keywords" content="speed test, internet speed, download speed, upload speed, network test">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Adsterra Ad Script -->
+    <script async="async" data-cfasync="false" src="//pl27263709.profitableratecpm.com/d6b05efa72a2a5aab2a9fd9ab55b6b61/invoke.js"></script>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="container">
+        <!-- Top Ad Banner -->
+        <div class="ad-banner ad-top">
+            <div id="container-d6b05efa72a2a5aab2a9fd9ab55b6b61"></div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>SpeedCheck</h1>
+            <p class="subtitle">Test your internet connection speed instantly</p>
+        </div>
+
+        <!-- Speedometer -->
+        <div class="speedometer-container">
+            <div class="speedometer">
+                <svg class="gauge-svg" viewBox="0 0 320 320">
+                    <!-- Background Arc -->
+                    <path
+                        d="M 60 270 A 120 120 0 0 1 260 270"
+                        class="gauge-bg"
+                    />
+                    
+                    <!-- Speed Sections -->
+                    <path
+                        d="M 60 270 A 120 120 0 0 0 160 40"
+                        class="gauge-progress"
+                        stroke="url(#gradient1)"
+                    />
+                    <path
+                        d="M 160 40 A 120 120 0 0 0 260 270"
+                        class="gauge-progress"
+                        stroke="url(#gradient2)"
+                    />
+
+                    <!-- Speed Needle -->
+                    <g class="gauge-needle" id="speedNeedle">
+                        <line x1="160" y1="160" x2="160" y2="60" />
+                        <circle cx="160" cy="160" r="8" />
+                    </g>
+
+                    <!-- Gradients -->
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#06b6d4" />
+                            <stop offset="100%" stop-color="#3b82f6" />
+                        </linearGradient>
+                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#f59e0b" />
+                            <stop offset="100%" stop-color="#ef4444" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Speed Display -->
+                <div class="speed-display">
+                    <div class="speed-label" id="speedLabel">Mbps</div>
+                    <div class="speed-value" id="speedValue">0.00</div>
+                    <div class="speed-progress" id="speedProgress"></div>
+                </div>
+
+                <!-- Speed Markers -->
+                <div class="speed-markers">
+                    <div class="marker marker-0">0</div>
+                    <div class="marker marker-60">60</div>
+                    <div class="marker marker-300">300</div>
+                    <div class="marker marker-140">140</div>
+                    <div class="marker marker-200">200</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Ads (Desktop) -->
+        <div class="side-ads">
+            <div class="ad-sidebar ad-left">
+                <div class="ad-placeholder">
+                    <span>Advertisement</span>
+                </div>
+            </div>
+            <div class="ad-sidebar ad-right">
+                <div class="ad-placeholder">
+                    <span>Advertisement</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speed Stats -->
+        <div class="speed-stats">
+            <div class="stat-item">
+                <div class="stat-label">Download</div>
+                <div class="stat-value" id="downloadSpeed">0.00 Mbps</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Upload</div>
+                <div class="stat-value" id="uploadSpeed">0.00 Mbps</div>
+            </div>
+        </div>
+
+        <!-- Middle Ad (Mobile) -->
+        <div class="ad-banner ad-middle mobile-only">
+            <div class="ad-placeholder">
+                <span>Advertisement</span>
+            </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="controls">
+            <button class="btn btn-start" id="startBtn" onclick="toggleSpeedTest()">
+                <span id="startIcon">▶</span>
+                <span id="startText">Start Test</span>
+            </button>
+            <button class="btn btn-history" onclick="toggleHistory()">
+                <span>📊</span>
+                History
+            </button>
+        </div>
+
+        <!-- Ad between controls and history -->
+        <div class="ad-banner ad-between">
+            <div class="ad-placeholder">
+                <span>Advertisement</span>
+            </div>
+        </div>
+
+        <!-- History Panel -->
+        <div class="history-panel" id="historyPanel">
+            <h3 class="history-title">Test History</h3>
+            <div id="historyContent">
+                <p style="text-align: center; color: #9ca3af;">No tests yet</p>
+            </div>
+            
+            <!-- History Ad -->
+            <div class="ad-banner ad-history">
+                <div class="ad-placeholder">
+                    <span>Advertisement</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 SpeedCheck. Fast & Accurate Internet Speed Testing.</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Banner -->
+        <div class="ad-banner ad-bottom">
+            <div class="ad-placeholder">
+                <span>Advertisement</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

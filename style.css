@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #111827;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.background-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.background-pattern::before,
+.background-pattern::after {
+    content: '';
+    position: absolute;
+    border: 1px solid #3b82f6;
+    border-radius: 50%;
+}
+
+.background-pattern::before {
+    width: 256px;
+    height: 256px;
+    top: 80px;
+    left: 80px;
+}
+
+.background-pattern::after {
+    width: 384px;
+    height: 384px;
+    bottom: 80px;
+    right: 80px;
+    border-color: #06b6d4;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.speedometer-container {
+    position: relative;
+    margin-bottom: 48px;
+}
+
+.speedometer {
+    width: 320px;
+    height: 320px;
+    position: relative;
+}
+
+.gauge-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.gauge-bg {
+    fill: none;
+    stroke: rgba(75, 85, 99, 0.3);
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.gauge-progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    opacity: 0.6;
+}
+
+.gauge-needle {
+    transform-origin: 160px 160px;
+    transition: transform 0.3s ease;
+}
+
+.gauge-needle line {
+    stroke: #ef4444;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.gauge-needle circle {
+    fill: #ef4444;
+}
+
+.speed-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.speed-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+
+.speed-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.speed-progress {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+.speed-markers {
+    position: absolute;
+    inset: 0;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.marker {
+    position: absolute;
+}
+
+.marker-0 { 
+    bottom: 16px; 
+    left: 32px; 
+}
+
+.marker-60 { 
+    top: 32px; 
+    left: 64px; 
+}
+
+.marker-300 { 
+    top: 8px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.marker-140 { 
+    top: 32px; 
+    right: 64px; 
+}
+
+.marker-200 { 
+    bottom: 16px; 
+    right: 32px; 
+}
+
+.speed-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+.controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.btn {
+    padding: 12px 32px;
+    border-radius: 9999px;
+    font-weight: 600;
+    color: white;
+    font-size: 1.125rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-start {
+    background: linear-gradient(to right, #f59e0b, #ea580c);
+}
+
+.btn-start:hover {
+    background: linear-gradient(to right, #d97706, #dc2626);
+}
+
+.btn-stop {
+    background: linear-gradient(to right, #ef4444, #dc2626);
+}
+
+.btn-history {
+    background: linear-gradient(to right, #3b82f6, #1d4ed8);
+}
+
+.btn-history:hover {
+    background: linear-gradient(to right, #2563eb, #1e40af);
+}
+
+.history-panel {
+    background: #1f2937;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 384px;
+    margin-top: 32px;
+    display: none;
+}
+
+.history-panel.show {
+    display: block;
+}
+
+.history-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.history-item {
+    background: #374151;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.history-date {
+    font-size: 0.875rem;
+    color: #d1d5db;
+    margin-bottom: 8px;
+}
+
+.history-speeds {
+    display: flex;
+    justify-content: space-between;
+}
+
+.speed-down {
+    color: #06b6d4;
+}
+
+.speed-up {
+    color: #f59e0b;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .speedometer {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .speed-stats {
+        gap: 16px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+        justify-content: center;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .speed-value {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px;
+    }
+    
+    .speedometer {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .speed-stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .speed-value {
+        font-size: 1.75rem;
+    }
+}
